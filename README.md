@@ -52,7 +52,7 @@ I am sending a sample file which has its original format, the format after editi
 --------------
 original file:
 --------------
-
+```
 H DX=799.000 DY=689.000 DZ=12.000 -A C=0 R1 *MM /def.TLG  BX=0 BY=0 BZ=0
 XG0 X=162.656 Y=-450.985 Z=-1.000 T=8
 XG0   Z=-2.000 T=8
@@ -87,11 +87,11 @@ XG0   Z=-2.000 T=8
 XL2P   Z=5.000 T=8 
 XG0   Z=-1.000 T=8
 XN X=4920
-
+```
 ---------------------
 after script editing: 
 ---------------------
-
+```
 H DX=799.000 DY=689.000 DZ=12.000 -A C=0 R1 *MM /def.TLG  BX=0 BY=0 BZ=0
 XB X=162.656 Y=-450.985 Z=5.0 T=8 V1800 G=0
 ;
@@ -120,11 +120,11 @@ XB Z=5.0 T=8 V1800 G=0
 XL2P   Z=5.000 T=8 
 XB Z=5.0 T=8 V1800 G=0
 XN X=4920
-
+```
 ------------------------
 how would be as correct:
 ------------------------
-
+```
 H DX=799.000 DY=689.000 DZ=12.000 -A C=0 R1 *MM /def.TLG  BX=0 BY=0 BZ=0
 XB X=162.656 Y=-450.985 Z=5.0 T=8 V1800 G=0
 ;
@@ -135,13 +135,13 @@ XB X=116.289 Y=-450.985 Z=5.0 T=8 V1800 G=0
 XB X=162.656 Z=6.0 T=8 V1800 G=0
 ;
 XB Y=-396.258 Z=6.0 T=8 V1800 G=0
-:
+;
 XB X=116.289 Y=-450.985 Z=6.0 T=8 V1800 G=0
-:
+;
 XB X=212.733 Y=-396.258 Z=5.0 T=8 V1800 G=0
 ;
 XB X=162.656 Z=5.0 T=8 V1800 G=0
 ;
 XN X=4920
-
+```
 
