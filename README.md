@@ -43,3 +43,105 @@ Any lines containing a three-digit T value (e.g., T=123) should remain unmodifie
 Issue:
 Despite my efforts, the script currently does not update the effective Z correctly when a new triple with a different Z is encountered. The converted pre-lines continue to use the old effective Z even when a subsequent triple indicates a change. I am looking for suggestions or corrections that ensure the effective Z is updated dynamically and applied correctly to each pre-line conversion.
 
+I made this script in chatgpt, however if anyone thinks I can make it simpler or has a better idea I am open to suggestions since I don't know much about python programming and other programming languages.
+thanks in advance
+
+I am sending a sample file which has its original format, the format after editing the script and finally how it should be correct..
+
+
+--------------
+original file:
+--------------
+
+H DX=799.000 DY=689.000 DZ=12.000 -A C=0 R1 *MM /def.TLG  BX=0 BY=0 BZ=0
+XG0 X=162.656 Y=-450.985 Z=-1.000 T=8
+XG0   Z=-2.000 T=8
+XL2P   Z=5.000 T=8 V1000000
+XG0   Z=-1.000 T=8
+XG0  Y=-396.258  T=8
+XG0   Z=-2.000 T=8
+XL2P   Z=5.000 T=8 V1000000
+XG0   Z=-1.000 T=8
+XG0 X=116.289 Y=-450.985  T=8
+XG0   Z=-2.000 T=8
+XL2P   Z=5.000 T=8 V1000000
+XG0   Z=-1.000 T=8
+XG0 X=162.656   T=8
+XG0   Z=-2.000 T=8
+XL2P   Z=6.000 T=8 
+XG0   Z=-1.000 T=8
+XG0  Y=-396.258  T=8
+XG0   Z=-2.000 T=8
+XL2P   Z=6.000 T=8 
+XG0   Z=-1.000 T=8
+XG0 X=116.289 Y=-450.985  T=8
+XG0   Z=-2.000 T=8
+XL2P   Z=6.000 T=8 
+XG0   Z=-1.000 T=8
+XG0 X=212.733 Y=-396.258  T=8
+XG0   Z=-2.000 T=8
+XL2P   Z=5.000 T=8 
+XG0   Z=-1.000 T=8
+XG0 X=162.656   T=8
+XG0   Z=-2.000 T=8
+XL2P   Z=5.000 T=8 
+XG0   Z=-1.000 T=8
+XN X=4920
+
+---------------------
+after script editing: 
+---------------------
+
+H DX=799.000 DY=689.000 DZ=12.000 -A C=0 R1 *MM /def.TLG  BX=0 BY=0 BZ=0
+XB X=162.656 Y=-450.985 Z=5.0 T=8 V1800 G=0
+;
+XB Y=-396.258 Z=5.0 T=8 V1800 G=0
+;
+XB X=116.289 Y=-450.985 Z=5.0 T=8 V1800 G=0
+;
+XB X=162.656 Z=5.0 T=8 V1800 G=0
+XB Z=5.0 T=8 V1800 G=0
+XL2P   Z=6.000 T=8 
+XB Z=5.0 T=8 V1800 G=0
+XB Y=-396.258 Z=5.0 T=8 V1800 G=0
+XB Z=5.0 T=8 V1800 G=0
+XL2P   Z=6.000 T=8 
+XB Z=5.0 T=8 V1800 G=0
+XB X=116.289 Y=-450.985 Z=5.0 T=8 V1800 G=0
+XB Z=5.0 T=8 V1800 G=0
+XL2P   Z=6.000 T=8 
+XB Z=5.0 T=8 V1800 G=0
+XB X=212.733 Y=-396.258 Z=5.0 T=8 V1800 G=0
+XB Z=5.0 T=8 V1800 G=0
+XL2P   Z=5.000 T=8 
+XB Z=5.0 T=8 V1800 G=0
+XB X=162.656 Z=5.0 T=8 V1800 G=0
+XB Z=5.0 T=8 V1800 G=0
+XL2P   Z=5.000 T=8 
+XB Z=5.0 T=8 V1800 G=0
+XN X=4920
+
+------------------------
+how would be as correct:
+------------------------
+
+H DX=799.000 DY=689.000 DZ=12.000 -A C=0 R1 *MM /def.TLG  BX=0 BY=0 BZ=0
+XB X=162.656 Y=-450.985 Z=5.0 T=8 V1800 G=0
+;
+XB Y=-396.258 Z=5.0 T=8 V1800 G=0
+;
+XB X=116.289 Y=-450.985 Z=5.0 T=8 V1800 G=0
+;
+XB X=162.656 Z=6.0 T=8 V1800 G=0
+;
+XB Y=-396.258 Z=6.0 T=8 V1800 G=0
+:
+XB X=116.289 Y=-450.985 Z=6.0 T=8 V1800 G=0
+:
+XB X=212.733 Y=-396.258 Z=5.0 T=8 V1800 G=0
+;
+XB X=162.656 Z=5.0 T=8 V1800 G=0
+;
+XN X=4920
+
+
